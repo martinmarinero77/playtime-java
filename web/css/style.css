@@ -1,0 +1,117 @@
+/*
+    Hoja de estilos personalizada para PlayTimeApp.
+    Estos estilos complementan a Bootstrap.
+*/
+
+/* Paleta de colores global */
+:root {
+    --primary-blue: #2563eb;
+    --primary-blue-dark: #1e40af;
+    --success-green: #10b981;
+    --warning-orange: #f59e0b;
+    --purple: #8b5cf6;
+}
+
+/* 1. Fondo gradiente (replicando el de Flutter) */
+body.body-gradient {
+    /* Colores de Tailwind: from-blue-600 via-blue-800 to-blue-900 */
+    background: linear-gradient(to bottom, var(--primary-blue), #1d4ed8, var(--primary-blue-dark));
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* 2. Tarjeta de bienvenida (replicando el estilo glass/blur) */
+.welcome-card {
+    background: rgba(0, 0, 0, 0.2);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 1.5rem; /* 24px */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 3. Animación de entrada (movida desde el JSP) */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1.2s ease-out forwards;
+}
+
+/* 4. Estilo del Logo (replicando Tailwind) */
+.logo-container {
+    width: 7rem; /* 112px */
+    height: 7rem; /* 112px */
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 5. Estilo de los items de características (replicando Tailwind) */
+.feature-item {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.75rem; /* 12px */
+    padding: 1rem 1.25rem;
+}
+
+/* 6. Ajustes de botones Bootstrap para que coincidan con el diseño */
+.btn-check:focus + .btn, .btn:focus {
+    box-shadow: 0 0 0 .25rem rgba(255, 255, 255, 0.25); /* Sombra de foco más visible */
+}
+
+/* Asegurar que los íconos SVG dentro de los botones se alineen bien */
+.btn svg.bi {
+    margin-bottom: 2px; /* Pequeño ajuste vertical */
+}
+
+/* 7. Estilos para la barra de navegación inferior (movidos desde home.jsp) */
+body {
+    background-color: #f9fafb;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    padding-bottom: 80px; /* Espacio para bottom nav */
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-top: 1px solid #e5e7eb;
+    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+}
+
+.bottom-nav .nav-link {
+    color: #6b7280;
+    padding: 0.75rem 0.5rem;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.bottom-nav .nav-link.active {
+    color: var(--primary-blue);
+    background-color: rgba(37, 99, 235, 0.05);
+    border-radius: 12px;
+}
+
+.bottom-nav .nav-link:hover {
+    color: var(--primary-blue);
+}
+
+.bottom-nav .nav-link i {
+    font-size: 1.25rem;
+}
+
+.bottom-nav .nav-link span {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
