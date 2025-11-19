@@ -18,27 +18,12 @@ El repositorio contiene el archivo `playtime_db_dump.sql` en la carpeta `/db`. E
         ```
     * **(Recomendado)** **En MySQL Workbench:** Usa **Server** > **Data Import** y selecciona "Import from Self-Contained File".
 
-### 1.2 Estructura del Modelo de Datos (EER)
-
-El esquema relacional incluye las siguientes entidades clave y una clave única para asegurar la integridad de las reservas:
-
-* **Entidades:** `usuario`, `complejo`, `deportes`, `cancha`, `reserva`, `equipo`.
-* **Tablas de Unión (N:M):** `reserva_jugador`, `equipo_jugador`.
-* **Restricción Clave:** La tabla `reserva` incluye una clave única (UNIQUE) compuesta por `(cancha_idCancha, fechaHoraInicio)`. Esta restricción asegura que la misma cancha no pueda ser reservada dos veces a la misma hora exacta, lo cual es manejado por la capa de negocio antes de persistir.
-
----
 
 ## 🚀 2. Configuración del Servidor (GlassFish)
 
 La aplicación utiliza un Pool de Conexiones JNDI para acceder a la base de datos de manera eficiente.
 
-### 2.1 Archivo de Recursos
-
-El archivo de configuración original (`glassfish-resources.xml`) no ha sido subido por motivos de seguridad (contiene la contraseña del desarrollador). En su lugar, se proporciona una plantilla:
-
-* **Archivo en Repo:** `/glassfish-resources.template.xml`
-
-### 2.2 Creación del Pool de Conexiones
+### 2.1 Creación del Pool de Conexiones
 
 Debe crear un nuevo **JDBC Connection Pool** en su servidor GlassFish con el nombre **`playtime_dbPool`** para que la aplicación pueda inyectar el recurso JNDI `jdbc/playtime`.
 
